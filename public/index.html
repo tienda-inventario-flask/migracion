@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Migratorio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Usuario</h1>
+        <form id="registroForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" placeholder="Escribe el nombre" required>
+            
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" placeholder="Escribe el apellido" required>
+            
+            <label for="pasaporte">Número de Pasaporte:</label>
+            <input type="text" id="pasaporte" placeholder="Escribe el número de pasaporte" required>
+            
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" required>
+            
+            <button type="submit">Registrar y Generar QR</button>
+        </form>
+        
+        <div id="qrContainer">
+            </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
