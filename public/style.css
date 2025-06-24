@@ -1,10 +1,14 @@
-/* public/style.css */
+/* public/style.css - VERSIÓN MEJORADA */
 
-/* --- Estilos Generales para toda la página --- */
+/* --- Estilos Generales --- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f4f9; /* Un fondo gris claro y suave */
-    color: #333;
+    /* ¡NUEVA FUENTE! */
+    font-family: 'Poppins', sans-serif; 
+    
+    /* ¡NUEVO FONDO CON DEGRADADO! */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    color: #4f4f4f; /* Un gris oscuro más suave */
     margin: 0;
     padding: 20px;
     display: flex;
@@ -14,75 +18,88 @@ body {
     box-sizing: border-box;
 }
 
-/* --- Contenedor principal tipo "tarjeta" --- */
+/* --- Contenedor Principal tipo "tarjeta" --- */
 .container {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco ligeramente transparente */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque para el fondo */
     padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     max-width: 500px;
     width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: translateY(-5px); /* Pequeño efecto de elevación al pasar el mouse */
 }
 
 /* --- Títulos --- */
-h1, h2 {
+h1 {
     text-align: center;
-    color: #0056b3; /* Un azul oscuro */
+    color: #3f51b5; /* Un azul índigo */
+    font-weight: 700;
 }
 
 h2 {
+    text-align: center;
     color: #555;
     font-size: 1.2em;
+    font-weight: 500;
     border-top: 1px solid #eee;
     padding-top: 20px;
     margin-top: 30px;
 }
 
 /* --- Formulario --- */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
 label {
     margin-bottom: 5px;
-    font-weight: bold;
-    color: #444;
+    font-weight: 500;
+    color: #333;
 }
 
 input[type="text"],
-input[type="date"] {
+input[type="date"],
+input[type="file"] {
+    width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Efecto al hacer clic en un campo */
-input[type="text"]:focus,
-input[type="date"]:focus {
+input:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #3f51b5;
+    box-shadow: 0 0 8px rgba(63, 81, 181, 0.3);
 }
 
 /* --- Botón --- */
 button {
-    background-color: #007bff; /* Un azul brillante */
+    background: linear-gradient(45deg, #3f51b5, #764ba2); /* Degradado en el botón */
     color: white;
     padding: 15px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:hover {
-    background-color: #0056b3; /* Un azul más oscuro al pasar el mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
 }
 
 /* --- Contenedor del QR y de la Info --- */
@@ -91,24 +108,18 @@ button:hover {
     margin-top: 20px;
 }
 
-#qrContainer img {
-    max-width: 200px;
-    margin-top: 10px;
+/* --- ¡NUEVO SPINNER DE CARGA! --- */
+.loader {
+    border: 5px solid #f3f3f3; /* Gris claro */
+    border-top: 5px solid #3f51b5; /* Azul del tema */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
 }
 
-#userInfo p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    text-align: left;
-    border-bottom: 1px solid #f0f0f0;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-
-#userInfo p:last-child {
-    border-bottom: none;
-}
-
-#userInfo strong {
-    color: #0056b3;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

@@ -1,14 +1,16 @@
 document.getElementById('registroForm').addEventListener('submit', async function(event) {
     event.preventDefault();
+    
     const submitBtn = document.getElementById('submitBtn');
     const qrContainer = document.getElementById('qrContainer');
-    
-    // Deshabilitamos el botón para evitar envíos múltiples
+    const loader = document.getElementById('loader'); // Obtenemos el spinner
+
+    // --- LÓGICA MEJORADA ---
     submitBtn.disabled = true;
     submitBtn.textContent = 'Registrando...';
-    qrContainer.innerHTML = ''; // Limpiamos resultados anteriores
+    qrContainer.innerHTML = ''; 
+    loader.style.display = 'block'; // Mostramos el spinner
 
-    // Usamos FormData para poder incluir el archivo de la imagen
     const formData = new FormData();
     formData.append('nombre', document.getElementById('nombre').value);
     formData.append('apellido', document.getElementById('apellido').value);
@@ -23,14 +25,11 @@ document.getElementById('registroForm').addEventListener('submit', async functio
     try {
         const response = await fetch('/api/register', {
             method: 'POST',
-            body: formData, // Ya no enviamos JSON, sino FormData
-            // No especificamos 'Content-Type', el navegador lo hace automáticamente
+            body: formData,
         });
 
-        const data = await response.json(); // Leemos la respuesta del servidor
-
+        const data = await response.json();
         if (!response.ok) {
-            // Si la respuesta no es exitosa, usamos el mensaje que nos envía el servidor
             throw new Error(data.message || 'Error al registrar');
         }
         
@@ -39,11 +38,11 @@ document.getElementById('registroForm').addEventListener('submit', async functio
 
     } catch (error) {
         console.error('Hubo un error:', error);
-        // Mostramos el mensaje de error específico
-        qrContainer.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+        qrContainer.innerHTML = `<p style="color: #d32f2f; font-weight: bold;">Error: ${error.message}</p>`; // Mensaje de error más visible
     } finally {
-        // Volvemos a habilitar el botón
+        // Esto se ejecuta siempre, haya error o no
         submitBtn.disabled = false;
         submitBtn.textContent = 'Registrar y Generar QR';
+        loader.style.display = 'none'; // Ocultamos el spinner
     }
 });
