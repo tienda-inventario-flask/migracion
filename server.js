@@ -75,7 +75,7 @@ app.post('/api/register', upload.single('foto'), async (req, res) => {
       [id, nombre, apellido, pasaporte, fecha_nacimiento, imageUrl]
     );
 
-    const userProfileURL = `${process.env.BASE_URL || `https://migracion-qr-app.onrender.com`}/user.html?id=${id}`;
+    const userProfileURL = `${process.env.BASE_URL || `https://migracion-qr.onrender.com`}/user.html?id=${id}`;
     const qrCodeDataURL = await qrcode.toDataURL(userProfileURL);
 
     res.status(201).json({ qrCode: qrCodeDataURL });
