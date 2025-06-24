@@ -215,3 +215,34 @@ tr:hover { background-color: #f1f7ff; }
 .detail-field p { margin: 0; font-size: 1.1em; font-weight: 500; color: #212529; }
 .user-id-detail { font-family: monospace; font-size: 0.95em !important; word-wrap: break-word; }
 @media (max-width: 900px) { .main-container { grid-template-columns: 1fr; height: auto; } .info-panel { display: none; } .form-panel { padding: 30px; } .admin-link { position: static; float: right; margin-bottom: 20px; } }
+/* --- Estilos para Botones de Acción en el Header del Admin --- */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre los botones */
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    background-color: #4a69ff; /* Color primario azul */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background-color: #3b55d1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Pequeño ajuste al link de cerrar sesión para que sea consistente */
+.back-link i {
+    font-size: 1.1em;
+}
