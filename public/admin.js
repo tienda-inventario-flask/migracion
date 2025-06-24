@@ -1,4 +1,4 @@
-// public/admin.js - VERSIÓN MEJORADA CON FOTOS Y DELETE
+// public/admin.js - VERSIÓN SIMPLIFICADA SIN FOTOS
 
 window.addEventListener('load', () => {
     const userListBody = document.getElementById('user-list');
@@ -19,19 +19,14 @@ window.addEventListener('load', () => {
             loadingMessage.style.display = 'none';
 
             if (users.length === 0) {
-                userListBody.innerHTML = '<tr><td colspan="6">No hay usuarios registrados todavía.</td></tr>';
+                userListBody.innerHTML = '<tr><td colspan="5">No hay usuarios registrados todavía.</td></tr>';
                 return;
             }
 
             userListBody.innerHTML = '';
             users.forEach(user => {
                 const row = document.createElement('tr');
-                
-                // Imagen de perfil (con un placeholder si no existe)
-                const profilePic = user.imagen_url || 'https://i.imgur.com/SufHYmU.png';
-                
                 row.innerHTML = `
-                    <td><img src="${profilePic}" alt="Foto" class="profile-thumbnail"></td>
                     <td>${user.nombre}</td>
                     <td>${user.apellido}</td>
                     <td>${user.pasaporte}</td>
@@ -53,10 +48,10 @@ window.addEventListener('load', () => {
     };
 
     userListBody.addEventListener('click', async (event) => {
-        const button = event.target.closest('.delete-btn'); // Buscamos el botón, incluso si se hace clic en el icono
+        const button = event.target.closest('.delete-btn');
         if (button) {
             const userId = button.dataset.id;
-            const userName = button.closest('tr').cells[1].textContent; // Obtenemos el nombre para el mensaje
+            const userName = button.closest('tr').cells[0].textContent;
 
             const isConfirmed = confirm(`¿Estás seguro de que quieres eliminar a ${userName}? Esta acción no se puede deshacer.`);
 
