@@ -1,4 +1,4 @@
-/* public/style.css - REDISEÑO FINAL CON LOGIN ELEGANTE */
+/* public/style.css - DISEÑO FINAL UNIFICADO */
 
 /* --- Estilos Generales --- */
 body {
@@ -6,35 +6,40 @@ body {
     margin: 0;
     background-color: #eef2f9; /* Fondo limpio y claro */
     color: #333;
-}
-
-/* --- NUEVO DISEÑO PARA EL LOGIN --- */
-.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
 }
 
-.login-card {
+/* --- Contenedor Principal (para centrar tarjetas) --- */
+.main-content-wrapper, .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* --- Estilo de Tarjeta Principal (Usado en Login y Registro) --- */
+.form-card, .login-card {
     background: #ffffff;
     padding: 40px 50px;
     border-radius: 16px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
+    box-sizing: border-box;
 }
 
-.login-logo {
+.form-logo, .login-logo {
     width: 120px;
     margin-bottom: 20px;
 }
 
-.login-card h2 {
+.form-card h1, .login-card h2 {
     margin-top: 0;
     margin-bottom: 10px;
     font-weight: 700;
@@ -46,26 +51,48 @@ body {
     margin-bottom: 30px;
 }
 
-.login-card form label {
-    display: block;
+/* --- Estilos de Formulario --- */
+form {
     text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
     font-size: 0.9em;
     font-weight: 500;
     margin-bottom: 8px;
     color: #495057;
 }
 
-.login-card form input {
+form input[type="text"],
+form input[type="date"],
+form input[type="file"],
+form input[type="password"] {
     width: 100%;
     padding: 12px;
     border: 1px solid #dcdce0;
     border-radius: 8px;
     font-size: 1em;
     box-sizing: border-box;
-    margin-bottom: 20px;
 }
 
-.login-card form button {
+form input:focus {
+    outline: none;
+    border-color: #4a69ff;
+    box-shadow: 0 0 5px rgba(74, 105, 255, 0.3);
+}
+
+form button {
     width: 100%;
     background: #4a69ff;
     color: white;
@@ -76,9 +103,10 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
-.login-card form button:hover {
+form button:hover {
     background: #3b55d1;
 }
 
@@ -87,98 +115,53 @@ body {
     text-align: center;
     margin-top: 15px;
     font-weight: 500;
-    min-height: 1.2em; /* Evita que el layout salte */
+    min-height: 1.2em;
 }
 
-
-/* --- ESTILOS PARA LAS OTRAS PÁGINAS (INDEX, ADMIN, USER) --- */
-
-/* Contenedor Principal de Dos Columnas */
-.main-container {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-/* Columna Izquierda (Panel Informativo) */
-.info-panel {
-    background: #1c2538;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    text-align: center;
-}
-
-.info-logo {
-    width: 150px;
-    margin-bottom: 20px;
-}
-
-.info-panel h2 {
-    font-weight: 400;
-    opacity: 0.7;
-    margin: 0;
-    color: white;
-    border: none;
-    text-align: center;
-}
-
-.info-panel h1 {
-    font-weight: 700;
-    font-size: 2em;
-    margin: 10px 0;
-    color: white;
-    text-align: center;
-}
-
-.info-panel p {
-    font-size: 1.1em;
-}
-
-/* Columna Derecha (Panel del Formulario) */
-.form-panel {
-    background: #f4f7fc;
-    padding: 40px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    overflow-y: auto;
-}
-
-.form-panel h2 {
-    margin-top: 0;
-    margin-bottom: 30px;
-    font-weight: 700;
-    color: #1c2538;
-    text-align: left;
-    border: none;
-}
-
-/* Botón de Admin */
-.admin-link {
-    position: absolute;
-    top: 40px;
-    right: 60px;
+/* --- Enlace Flotante para Panel de Admin --- */
+.page-corner-link {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
     text-decoration: none;
-    background-color: #e9ecef;
-    color: #495057;
-    padding: 8px 15px;
-    border-radius: 6px;
+    background-color: #1c2538;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
     font-weight: 500;
     font-size: 0.9em;
-    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.2s;
 }
-.admin-link:hover {
-    background-color: #dee2e6;
+.page-corner-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-/* Contenedor de Admin */
+/* --- Contenedor de QR y Loader --- */
+#qrContainer {
+    margin-top: 20px;
+    text-align: center;
+}
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #4a69ff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- ESTILOS PARA EL PANEL DE ADMINISTRACIÓN --- */
 .container-admin {
     max-width: 900px;
     margin: 40px auto;
@@ -187,14 +170,16 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
-
-/* ... (el resto de los estilos para admin y user profile se mantienen igual, este código los incluye) ... */
-/* Se pegan aquí para asegurar que el archivo esté completo */
+/* ... (Se pegan aquí todos los demás estilos de admin y user profile) ... */
 .admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dee2e6; padding-bottom: 20px; margin-bottom: 20px; }
 .header-branding { display: flex; align-items: center; gap: 15px; }
 .header-logo { width: 60px; height: auto; }
 .admin-header h1 { margin: 0; font-size: 1.8em; color: #2c3e50; }
-.back-link { display: flex; align-items: center; gap: 8px; text-decoration: none; background-color: #f8f9fa; color: #495057; padding: 10px 15px; border-radius: 8px; font-weight: 500; border: 1px solid #dee2e6; transition: background-color 0.2s; }
+.header-actions { display: flex; align-items: center; gap: 15px; }
+.action-btn, .back-link { display: flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 15px; border-radius: 8px; font-weight: 500; border: 1px solid transparent; transition: all 0.2s; }
+.action-btn { background-color: #4a69ff; color: white; }
+.action-btn:hover { background-color: #3b55d1; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.back-link { background-color: #f8f9fa; color: #495057; border-color: #dee2e6; }
 .back-link:hover { background-color: #e9ecef; }
 .table-wrapper { width: 100%; overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; margin-top: 10px; }
@@ -203,7 +188,7 @@ th { background-color: #f8f9fa; font-weight: 500; color: #495057; text-transform
 tr:hover { background-color: #f1f7ff; }
 .delete-btn { background-color: transparent; color: #dc3545; border: 1px solid #dc3545; border-radius: 5px; width: 40px; height: 40px; cursor: pointer; font-size: 1.1em; transition: all 0.2s; display: flex; justify-content: center; align-items: center; }
 .delete-btn:hover { background-color: #dc3545; color: white; }
-.user-profile { background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e9ecef; }
+.user-profile { background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e9ecef; max-width: 500px; }
 .user-profile-header { display: flex; align-items: center; padding: 25px; border-bottom: 1px solid #e9ecef; }
 .user-profile-picture { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-right: 20px; border: 3px solid #f8f9fa; }
 .user-profile-name { margin: 0; font-size: 1.8em; font-weight: 700; color: #2c3e50; line-height: 1.2; }
@@ -214,35 +199,3 @@ tr:hover { background-color: #f1f7ff; }
 .detail-field label { display: block; font-size: 0.85em; color: #6c757d; margin-bottom: 5px; text-transform: uppercase; }
 .detail-field p { margin: 0; font-size: 1.1em; font-weight: 500; color: #212529; }
 .user-id-detail { font-family: monospace; font-size: 0.95em !important; word-wrap: break-word; }
-@media (max-width: 900px) { .main-container { grid-template-columns: 1fr; height: auto; } .info-panel { display: none; } .form-panel { padding: 30px; } .admin-link { position: static; float: right; margin-bottom: 20px; } }
-/* --- Estilos para Botones de Acción en el Header del Admin --- */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* Espacio entre los botones */
-}
-
-.action-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    background-color: #4a69ff; /* Color primario azul */
-    color: white;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-weight: 500;
-    border: 1px solid transparent;
-    transition: all 0.2s;
-}
-
-.action-btn:hover {
-    background-color: #3b55d1;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* Pequeño ajuste al link de cerrar sesión para que sea consistente */
-.back-link i {
-    font-size: 1.1em;
-}
