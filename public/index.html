@@ -21,12 +21,15 @@
             
             <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
             <input type="date" id="fecha_nacimiento" required>
+
+            <label for="foto">Foto de Perfil (Opcional):</label>
+            <input type="file" id="foto" name="foto" accept="image/png, image/jpeg">
             
-            <button type="submit">Registrar y Generar QR</button>
+            <br>
+            <button type="submit" id="submitBtn">Registrar y Generar QR</button>
         </form>
         
-        <div id="qrContainer">
-            </div>
+        <div id="qrContainer"></div>
     </div>
 
     <script src="main.js"></script>
