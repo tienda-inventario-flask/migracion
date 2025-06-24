@@ -123,3 +123,28 @@ button:disabled {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+/* --- Estilos para el enlace al panel de admin --- */
+.admin-link {
+    display: inline-block; /* Permite que tenga padding y se comporte como bloque */
+    text-align: center;
+    margin-bottom: 25px; /* Espacio antes del título principal */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    background-color: #6c757d; /* Un color gris neutro para diferenciarlo */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9em;
+    float: right; /* Lo alinea a la derecha */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.admin-link:hover {
+    background-color: #5a6268; /* Un gris un poco más oscuro */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+/* Limpiamos el float para que no afecte al título h1 */
+h1 {
+    clear: both;
+}
