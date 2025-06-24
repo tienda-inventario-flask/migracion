@@ -1,10 +1,12 @@
+// public/user.js
+
 window.addEventListener('load', async () => {
     const params = new URLSearchParams(window.location.search);
     const userId = params.get('id');
-    const userInfoDiv = document.getElementById('userInfo');
+    const profileContent = document.getElementById('profile-content');
 
     if (!userId) {
-        userInfoDiv.innerHTML = '<p style="color: red;">No se proporcionó un ID de usuario.</p>';
+        profileContent.innerHTML = '<p style="color: red;">No se proporcionó un ID de usuario.</p>';
         return;
     }
 
@@ -14,26 +16,32 @@ window.addEventListener('load', async () => {
 
         const user = await response.json();
         
-        // Construimos el HTML dinámicamente
-        let userHtml = '';
-
-        // Si hay una URL de imagen, añadimos la etiqueta <img>
-        if (user.imagen_url) {
-            userHtml += `<img src="${user.imagen_url}" alt="Foto de perfil" style="max-width: 150px; border-radius: 50%; display: block; margin: 0 auto 20px;">`;
-        }
-
-        userHtml += `
-            <p><strong>Nombre:</strong> ${user.nombre}</p>
-            <p><strong>Apellido:</strong> ${user.apellido}</p>
-            <p><strong>Pasaporte:</strong> ${user.pasaporte}</p>
-            <p><strong>Fecha de Nacimiento:</strong> ${new Date(user.fecha_nacimiento).toLocaleDateString()}</p>
-            <p><strong>ID de Registro:</strong> ${user.id}</p>
+        let userHtml = `
+            <div class="profile-header">
+                <img src="${user.imagen_url || 'https://i.imgur.com/SufHYmU.png'}" alt="Foto de perfil" class="profile-picture">
+                <h1 class="profile-name">${user.nombre} ${user.apellido}</h1>
+                <p class="profile-id">ID: ${user.id}</p>
+            </div>
+            <div class="profile-details">
+                <div class="detail-item">
+                    <i class="fas fa-passport"></i>
+                    <span><strong>Pasaporte:</strong> ${user.pasaporte}</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span><strong>Nacimiento:</strong> ${new Date(user.fecha_nacimiento).toLocaleDateString()}</span>
+                </div>
+                 <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                    <span><strong>Registrado:</strong> ${new Date(user.created_at).toLocaleDateString()}</span>
+                </div>
+            </div>
         `;
         
-        userInfoDiv.innerHTML = userHtml;
+        profileContent.innerHTML = userHtml;
 
     } catch (error) {
         console.error('Error al cargar datos:', error);
-        userInfoDiv.innerHTML = `<p style="color: red;">Error: ${error.message}. No se pudo cargar la información.</p>`;
+        profileContent.innerHTML = `<p style="color: red;">Error: ${error.message}. No se pudo cargar la información.</p>`;
     }
 });

@@ -14,11 +14,13 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            table-layout: fixed; /* Ayuda a controlar el ancho de las columnas */
         }
         th, td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
+            word-wrap: break-word; /* Evita que el texto largo rompa la tabla */
         }
         th {
             background-color: #3f51b5;
@@ -45,7 +47,8 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Pasaporte</th>
-                        <th>Fecha de Nacimiento</th>
+                        <th>Nacimiento</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="user-list">

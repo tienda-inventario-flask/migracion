@@ -110,6 +110,24 @@ app.get('/api/admin/users', async (req, res) => {
   }
 });
 
+// DELETE /api/admin/users/:id - Borra un usuario por su ID
+app.delete('/api/admin/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteUser = await pool.query("DELETE FROM usuarios WHERE id = $1", [id]);
+
+    if (deleteUser.rowCount === 0) {
+      return res.status(404).json({ message: "Usuario no encontrado, no se pudo eliminar." });
+    }
+
+    res.status(200).json({ message: "Usuario eliminado exitosamente." });
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ message: "Error al eliminar el usuario." });
+  }
+});
+
 
 // --- Iniciar el Servidor ---
 app.listen(PORT, () => {

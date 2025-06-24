@@ -1,14 +1,10 @@
-/* public/style.css - VERSIÓN MEJORADA */
+/* public/style.css */
 
 /* --- Estilos Generales --- */
 body {
-    /* ¡NUEVA FUENTE! */
-    font-family: 'Poppins', sans-serif; 
-    
-    /* ¡NUEVO FONDO CON DEGRADADO! */
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    
-    color: #4f4f4f; /* Un gris oscuro más suave */
+    color: #4f4f4f;
     margin: 0;
     padding: 20px;
     display: flex;
@@ -18,28 +14,29 @@ body {
     box-sizing: border-box;
 }
 
-/* --- Contenedor Principal tipo "tarjeta" --- */
+/* --- Contenedor principal tipo "tarjeta" --- */
 .container {
-    background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco ligeramente transparente */
-    backdrop-filter: blur(10px); /* Efecto de desenfoque para el fondo */
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     padding: 30px 40px;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    max-width: 500px;
+    max-width: 600px; /* Aumentado para que la tabla quepa mejor */
     width: 100%;
     transition: transform 0.3s ease-in-out;
 }
 
 .container:hover {
-    transform: translateY(-5px); /* Pequeño efecto de elevación al pasar el mouse */
+    transform: translateY(-5px);
 }
 
 /* --- Títulos --- */
 h1 {
     text-align: center;
-    color: #3f51b5; /* Un azul índigo */
+    color: #3f51b5;
     font-weight: 700;
+    clear: both; /* Limpia el float del botón de admin */
 }
 
 h2 {
@@ -53,6 +50,11 @@ h2 {
 }
 
 /* --- Formulario --- */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 label {
     margin-bottom: 5px;
     font-weight: 500;
@@ -81,7 +83,7 @@ input:focus {
 
 /* --- Botón --- */
 button {
-    background: linear-gradient(45deg, #3f51b5, #764ba2); /* Degradado en el botón */
+    background: linear-gradient(45deg, #3f51b5, #764ba2);
     color: white;
     padding: 15px;
     border: none;
@@ -108,10 +110,10 @@ button:disabled {
     margin-top: 20px;
 }
 
-/* --- ¡NUEVO SPINNER DE CARGA! --- */
+/* --- Spinner de Carga --- */
 .loader {
-    border: 5px solid #f3f3f3; /* Gris claro */
-    border-top: 5px solid #3f51b5; /* Azul del tema */
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3f51b5;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -123,28 +125,101 @@ button:disabled {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
 /* --- Estilos para el enlace al panel de admin --- */
 .admin-link {
-    display: inline-block; /* Permite que tenga padding y se comporte como bloque */
+    display: inline-block;
     text-align: center;
-    margin-bottom: 25px; /* Espacio antes del título principal */
-    text-decoration: none; /* Quita el subrayado del enlace */
-    background-color: #6c757d; /* Un color gris neutro para diferenciarlo */
+    margin-bottom: 25px;
+    text-decoration: none;
+    background-color: #6c757d;
     color: white;
     padding: 8px 15px;
     border-radius: 6px;
     font-weight: 500;
     font-size: 0.9em;
-    float: right; /* Lo alinea a la derecha */
+    float: right;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 .admin-link:hover {
-    background-color: #5a6268; /* Un gris un poco más oscuro */
-    transform: translateY(-2px); /* Pequeño efecto de elevación */
+    background-color: #5a6268;
+    transform: translateY(-2px);
 }
 
-/* Limpiamos el float para que no afecte al título h1 */
-h1 {
-    clear: both;
+/* --- Estilos para el botón de eliminar --- */
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+
+/* --- Estilos para la Nueva Tarjeta de Perfil Elegante --- */
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 20px;
+    color: white;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 700;
+    color: white;
+}
+
+.profile-id {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.profile-details {
+    padding: 30px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.detail-item i {
+    color: #3f51b5;
+    font-size: 1.5em;
+    width: 40px;
+    text-align: center;
+    margin-right: 15px;
 }
