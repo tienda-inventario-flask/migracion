@@ -1,8 +1,8 @@
-/* public/style.css */
+/* public/style.css - VERSIÓN FINAL CONSOLIDADA */
 
 /* --- Estilos Generales --- */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif; 
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #4f4f4f;
     margin: 0;
@@ -16,13 +16,15 @@ body {
 
 /* --- Contenedor principal tipo "tarjeta" --- */
 .container {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://i.imgur.com/UqcUuAD.jpg');
+    background-blend-mode: normal;
+    background-size: cover;
     backdrop-filter: blur(10px);
     padding: 30px 40px;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    max-width: 600px; /* Aumentado para que la tabla quepa mejor */
+    max-width: 550px;
     width: 100%;
     transition: transform 0.3s ease-in-out;
 }
@@ -34,9 +36,11 @@ body {
 /* --- Títulos --- */
 h1 {
     text-align: center;
-    color: #3f51b5;
+    color: #2c3e50; /* Azul marino oscuro y profesional */
     font-weight: 700;
-    clear: both; /* Limpia el float del botón de admin */
+    clear: both;
+    font-size: 1.8em;
+    margin-top: 0;
 }
 
 h2 {
@@ -81,9 +85,9 @@ input:focus {
     box-shadow: 0 0 8px rgba(63, 81, 181, 0.3);
 }
 
-/* --- Botón --- */
+/* --- Botón Principal --- */
 button {
-    background: linear-gradient(45deg, #3f51b5, #764ba2);
+    background: #af8c5c; /* Color bronce/dorado del logo */
     color: white;
     padding: 15px;
     border: none;
@@ -91,10 +95,11 @@ button {
     font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.2s;
 }
 
 button:hover {
+    background: #9a794e; /* Tono más oscuro */
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -104,8 +109,8 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* --- Contenedor del QR y de la Info --- */
-#qrContainer, #userInfo {
+/* --- Contenedor del QR --- */
+#qrContainer {
     text-align: center;
     margin-top: 20px;
 }
@@ -126,25 +131,63 @@ button:disabled {
     100% { transform: rotate(360deg); }
 }
 
-/* --- Estilos para el enlace al panel de admin --- */
+/* --- Header del Formulario (Logo y Botón Admin) --- */
+.header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.form-logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+    position: relative;
+    top: -10px;
+}
+
 .admin-link {
-    display: inline-block;
-    text-align: center;
-    margin-bottom: 25px;
+    padding: 6px 12px;
+    font-size: 0.85em;
+    align-self: flex-start;
     text-decoration: none;
     background-color: #6c757d;
     color: white;
-    padding: 8px 15px;
     border-radius: 6px;
     font-weight: 500;
-    font-size: 0.9em;
-    float: right;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 .admin-link:hover {
     background-color: #5a6268;
     transform: translateY(-2px);
+}
+
+/* --- Estilos para la Tabla de Administración --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    word-wrap: break-word;
+}
+th {
+    background-color: #3f51b5;
+    color: white;
+    font-weight: 500;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f1f1f1;
 }
 
 /* --- Estilos para el botón de eliminar --- */
@@ -162,7 +205,6 @@ button:disabled {
 .delete-btn:hover {
     background-color: #c82333;
 }
-
 
 /* --- Estilos para la Nueva Tarjeta de Perfil Elegante --- */
 .profile-card {
