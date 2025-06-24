@@ -16,7 +16,7 @@ body {
 
 /* --- Contenedor principal tipo "tarjeta" --- */
 .container {
-    background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://i.imgur.com/UqcUuAD.jpg');
+    background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('/images/fondo-residencia.jpg');
     background-blend-mode: normal;
     background-size: cover;
     backdrop-filter: blur(10px);
