@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Extranjero</title>
+    <title>Registro de Extranjero - DGM</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,35 +12,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header-controls">
-            <img src="/images/logo-migracion.png" alt="Logo de Migración" class="form-logo">
-            <a href="/admin.html" class="admin-link">Panel de Migración</a>
+    <div class="main-container">
+        <div class="info-panel">
+            <img src="/images/logo-migracion.png" alt="Logo Dirección General de Migración" class="info-logo">
+            <h2>República Dominicana</h2>
+            <h1>Dirección General de Migración</h1>
+            <p>Portal de Registro para Extranjeros.</p>
         </div>
 
-        <h1>Registro de Extranjero</h1> <form id="registroForm">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" placeholder="Escribe el nombre" required>
+        <div class="form-panel">
+            <a href="/admin.html" class="admin-link">Panel de Migración</a>
+            <h2>Formulario de Registro</h2>
             
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" placeholder="Escribe el apellido" required>
-            
-            <label for="pasaporte">Número de Pasaporte:</label>
-            <input type="text" id="pasaporte" placeholder="Escribe el número de pasaporte" required>
-            
-            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="fecha_nacimiento" required>
+            <form id="registroForm">
+                <label for="nombre">Nombre(s)</label>
+                <input type="text" id="nombre" placeholder="Escriba su nombre" required>
+                
+                <label for="apellido">Apellido(s)</label>
+                <input type="text" id="apellido" placeholder="Escriba su apellido" required>
+                
+                <label for="pasaporte">Número de Pasaporte</label>
+                <input type="text" id="pasaporte" placeholder="Escriba el número de pasaporte" required>
+                
+                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                <input type="date" id="fecha_nacimiento" required>
 
-            <label for="foto">Foto de Perfil (Opcional):</label>
-            <input type="file" id="foto" name="foto" accept="image/png, image/jpeg">
+                <label for="foto">Foto de Perfil</label>
+                <input type="file" id="foto" name="foto" accept="image/png, image/jpeg">
+                
+                <button type="submit" id="submitBtn">Registrar y Generar QR</button>
+            </form>
             
-            <br>
-            <button type="submit" id="submitBtn">Registrar y Generar QR</button>
-        </form>
-        
-        <div class="loader" id="loader" style="display: none;"></div>
-        
-        <div id="qrContainer"></div>
+            <div class="loader" id="loader" style="display: none;"></div>
+            <div id="qrContainer"></div>
+        </div>
     </div>
 
     <script src="main.js"></script>
