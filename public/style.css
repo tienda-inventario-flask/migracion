@@ -1,27 +1,33 @@
-/* public/style.css - REDISEÑO COMPLETO */
+/* public/style.css - REDISEÑO CON FONDO LIMPIO */
 
-/* --- Estilos Generales y Fondo con Textura --- */
+/* --- Estilos Generales y Nuevo Fondo --- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    /* La textura de fondo, oscurecida con un degradado negro semi-transparente */
-    background-image: linear-gradient(rgba(25, 28, 38, 0.9), rgba(25, 28, 38, 0.9)), url('/images/fondo-residencia.jpg');
-    background-size: cover;
+    
+    /* ¡NUEVO FONDO! Un color sólido, claro y profesional */
+    background-color: #eef2f9; 
+    
     color: #333;
+    /* Mantenemos el display flex para centrar el contenido principal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* --- Contenedor Principal de Dos Columnas (Usando CSS Grid) --- */
+/* --- Contenedor Principal de Dos Columnas --- */
 .main-container {
     display: grid;
-    grid-template-columns: 40% 60%; /* Proporción de las columnas */
+    grid-template-columns: 40% 60%;
     width: 100vw;
     height: 100vh;
-    overflow: hidden; /* Evita el scroll */
+    overflow: hidden;
 }
 
 /* --- Columna Izquierda (Panel Informativo) --- */
 .info-panel {
-    background: #1c2538; /* Un azul marino muy oscuro y elegante */
+    background: #1c2538; /* Mantenemos el azul marino oscuro */
     color: white;
     display: flex;
     flex-direction: column;
@@ -41,7 +47,8 @@ body {
     opacity: 0.7;
     margin: 0;
     color: white;
-    border: none; /* Quitamos bordes previos */
+    border: none;
+    text-align: center;
 }
 
 .info-panel h1 {
@@ -49,6 +56,7 @@ body {
     font-size: 2em;
     margin: 10px 0;
     color: white;
+    text-align: center;
 }
 
 .info-panel p {
@@ -57,13 +65,13 @@ body {
 
 /* --- Columna Derecha (Panel del Formulario) --- */
 .form-panel {
-    background: #f4f7fc; /* Un fondo blanco-azulado muy claro */
+    background: #ffffff; /* Un blanco puro para máximo contraste y limpieza */
     padding: 40px 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative; /* Para posicionar el botón de admin */
-    overflow-y: auto; /* Permite scroll si el contenido es mucho */
+    position: relative;
+    overflow-y: auto;
 }
 
 .form-panel h2 {
@@ -75,11 +83,12 @@ body {
     border: none;
 }
 
-/* --- Estilos del Formulario (se mantienen similares) --- */
+/* --- Estilos del Formulario --- */
 form label {
     font-size: 0.9em;
     font-weight: 500;
     margin-bottom: 8px;
+    color: #495057;
 }
 
 form input[type="text"],
@@ -102,7 +111,7 @@ form input:focus {
 
 form button {
     width: 100%;
-    background: #4a69ff; /* Un azul eléctrico y moderno */
+    background: #4a69ff;
     color: white;
     padding: 15px;
     border: none;
@@ -139,6 +148,7 @@ form button:hover {
 /* --- Contenedor de QR y Loader --- */
 #qrContainer {
     margin-top: 20px;
+    text-align: center;
 }
 .loader {
     border: 5px solid #f3f3f3;
@@ -154,32 +164,19 @@ form button:hover {
     100% { transform: rotate(360deg); }
 }
 
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 900px) {
-    .main-container {
-        grid-template-columns: 1fr; /* Una sola columna */
-        height: auto;
-    }
-    .info-panel {
-        display: none; /* Ocultamos el panel de info en móviles para dar espacio al formulario */
-    }
-    .form-panel {
-        padding: 30px;
-    }
-    .admin-link {
-        position: static;
-        float: right;
-        margin-bottom: 20px;
-    }
-}
-/* --- ESTILOS PARA EL NUEVO PANEL DE ADMINISTRACIÓN --- */
+/* --- ESTILOS PARA EL PANEL DE ADMINISTRACIÓN --- */
 
-/* Un contenedor más ancho para la tabla */
+/* Contenedor más ancho para la tabla de admin */
 .container-admin {
-    max-width: 900px; 
+    max-width: 900px;
+    margin: 40px auto; /* Centrado verticalmente si la pantalla es alta */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
-/* Encabezado del panel */
+/* Encabezado del panel de admin */
 .admin-header {
     display: flex;
     justify-content: space-between;
@@ -192,7 +189,7 @@ form button:hover {
 .header-branding {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espacio entre el logo y el texto */
+    gap: 15px;
 }
 
 .header-logo {
@@ -224,13 +221,11 @@ form button:hover {
     background-color: #e9ecef;
 }
 
-/* Envoltura de la tabla para scroll horizontal en móvil */
 .table-wrapper {
     width: 100%;
     overflow-x: auto;
 }
 
-/* Estilos mejorados de la tabla */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -256,15 +251,6 @@ tr:hover {
     background-color: #f1f7ff;
 }
 
-/* Estilo para la foto de perfil en la tabla */
-.profile-thumbnail {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-/* Ajustes al botón de eliminar */
 .delete-btn {
     background-color: transparent;
     color: #dc3545;
@@ -284,7 +270,9 @@ tr:hover {
     background-color: #dc3545;
     color: white;
 }
-/* --- ESTILOS PARA LA NUEVA PÁGINA DE PERFIL DE USUARIO --- */
+
+
+/* --- ESTILOS PARA LA PÁGINA DE PERFIL DE USUARIO --- */
 
 .user-profile {
     background-color: #ffffff;
@@ -338,7 +326,7 @@ tr:hover {
 
 .detail-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
@@ -361,4 +349,23 @@ tr:hover {
     font-family: monospace;
     font-size: 0.95em !important;
     word-wrap: break-word;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 900px) {
+    .main-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .info-panel {
+        display: none;
+    }
+    .form-panel {
+        padding: 30px;
+    }
+    .admin-link {
+        position: static;
+        float: right;
+        margin-bottom: 20px;
+    }
 }
