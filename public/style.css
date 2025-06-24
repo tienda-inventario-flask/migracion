@@ -1,22 +1,99 @@
-/* public/style.css - REDISEÑO CON FONDO LIMPIO */
+/* public/style.css - REDISEÑO FINAL CON LOGIN ELEGANTE */
 
-/* --- Estilos Generales y Nuevo Fondo --- */
+/* --- Estilos Generales --- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    
-    /* ¡NUEVO FONDO! Un color sólido, claro y profesional */
-    background-color: #eef2f9; 
-    
+    background-color: #eef2f9; /* Fondo limpio y claro */
     color: #333;
-    /* Mantenemos el display flex para centrar el contenido principal */
+}
+
+/* --- NUEVO DISEÑO PARA EL LOGIN --- */
+.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* --- Contenedor Principal de Dos Columnas --- */
+.login-card {
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.login-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #1c2538;
+}
+
+.login-subtitle {
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.login-card form label {
+    display: block;
+    text-align: left;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #495057;
+}
+
+.login-card form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcdce0;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.login-card form button {
+    width: 100%;
+    background: #4a69ff;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-card form button:hover {
+    background: #3b55d1;
+}
+
+.error-text {
+    color: #dc3545;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500;
+    min-height: 1.2em; /* Evita que el layout salte */
+}
+
+
+/* --- ESTILOS PARA LAS OTRAS PÁGINAS (INDEX, ADMIN, USER) --- */
+
+/* Contenedor Principal de Dos Columnas */
 .main-container {
     display: grid;
     grid-template-columns: 40% 60%;
@@ -25,9 +102,9 @@ body {
     overflow: hidden;
 }
 
-/* --- Columna Izquierda (Panel Informativo) --- */
+/* Columna Izquierda (Panel Informativo) */
 .info-panel {
-    background: #1c2538; /* Mantenemos el azul marino oscuro */
+    background: #1c2538;
     color: white;
     display: flex;
     flex-direction: column;
@@ -63,9 +140,9 @@ body {
     font-size: 1.1em;
 }
 
-/* --- Columna Derecha (Panel del Formulario) --- */
+/* Columna Derecha (Panel del Formulario) */
 .form-panel {
-    background: #ffffff; /* Un blanco puro para máximo contraste y limpieza */
+    background: #f4f7fc;
     padding: 40px 60px;
     display: flex;
     flex-direction: column;
@@ -83,51 +160,7 @@ body {
     border: none;
 }
 
-/* --- Estilos del Formulario --- */
-form label {
-    font-size: 0.9em;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: #495057;
-}
-
-form input[type="text"],
-form input[type="date"],
-form input[type="file"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #dcdce0;
-    border-radius: 8px;
-    font-size: 1em;
-    box-sizing: border-box;
-}
-
-form input:focus {
-    outline: none;
-    border-color: #4a69ff;
-    box-shadow: 0 0 5px rgba(74, 105, 255, 0.3);
-}
-
-form button {
-    width: 100%;
-    background: #4a69ff;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-}
-
-form button:hover {
-    background: #3b55d1;
-}
-
-/* --- Posicionamiento del Botón de Admin --- */
+/* Botón de Admin */
 .admin-link {
     position: absolute;
     top: 40px;
@@ -145,227 +178,40 @@ form button:hover {
     background-color: #dee2e6;
 }
 
-/* --- Contenedor de QR y Loader --- */
-#qrContainer {
-    margin-top: 20px;
-    text-align: center;
-}
-.loader {
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #4a69ff;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* --- ESTILOS PARA EL PANEL DE ADMINISTRACIÓN --- */
-
-/* Contenedor más ancho para la tabla de admin */
+/* Contenedor de Admin */
 .container-admin {
     max-width: 900px;
-    margin: 40px auto; /* Centrado verticalmente si la pantalla es alta */
+    margin: 40px auto;
     padding: 30px;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
-/* Encabezado del panel de admin */
-.admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #dee2e6;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-
-.header-branding {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.header-logo {
-    width: 60px;
-    height: auto;
-}
-
-.admin-header h1 {
-    margin: 0;
-    font-size: 1.8em;
-    color: #2c3e50;
-}
-
-.back-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    background-color: #f8f9fa;
-    color: #495057;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-weight: 500;
-    border: 1px solid #dee2e6;
-    transition: background-color 0.2s;
-}
-
-.back-link:hover {
-    background-color: #e9ecef;
-}
-
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-th, td {
-    border: 1px solid #e9ecef;
-    padding: 12px 15px;
-    text-align: left;
-    vertical-align: middle;
-}
-
-th {
-    background-color: #f8f9fa;
-    font-weight: 500;
-    color: #495057;
-    text-transform: uppercase;
-    font-size: 0.85em;
-}
-
-tr:hover {
-    background-color: #f1f7ff;
-}
-
-.delete-btn {
-    background-color: transparent;
-    color: #dc3545;
-    border: 1px solid #dc3545;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: all 0.2s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.delete-btn:hover {
-    background-color: #dc3545;
-    color: white;
-}
-
-
-/* --- ESTILOS PARA LA PÁGINA DE PERFIL DE USUARIO --- */
-
-.user-profile {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    border: 1px solid #e9ecef;
-}
-
-.user-profile-header {
-    display: flex;
-    align-items: center;
-    padding: 25px;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.user-profile-picture {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 20px;
-    border: 3px solid #f8f9fa;
-}
-
-.user-profile-name {
-    margin: 0;
-    font-size: 1.8em;
-    font-weight: 700;
-    color: #2c3e50;
-    line-height: 1.2;
-}
-
-.user-profile-subtitle {
-    font-size: 1em;
-    font-weight: 500;
-    color: #6c757d;
-}
-
-.user-profile-body {
-    padding: 25px;
-}
-
-.user-profile-body h3 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-weight: 500;
-    color: #495057;
-    border-bottom: 1px solid #e9ecef;
-    padding-bottom: 10px;
-}
-
-.detail-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.detail-field label {
-    display: block;
-    font-size: 0.85em;
-    color: #6c757d;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-}
-
-.detail-field p {
-    margin: 0;
-    font-size: 1.1em;
-    font-weight: 500;
-    color: #212529;
-}
-
-.user-id-detail {
-    font-family: monospace;
-    font-size: 0.95em !important;
-    word-wrap: break-word;
-}
-
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 900px) {
-    .main-container {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    .info-panel {
-        display: none;
-    }
-    .form-panel {
-        padding: 30px;
-    }
-    .admin-link {
-        position: static;
-        float: right;
-        margin-bottom: 20px;
-    }
-}
+/* ... (el resto de los estilos para admin y user profile se mantienen igual, este código los incluye) ... */
+/* Se pegan aquí para asegurar que el archivo esté completo */
+.admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dee2e6; padding-bottom: 20px; margin-bottom: 20px; }
+.header-branding { display: flex; align-items: center; gap: 15px; }
+.header-logo { width: 60px; height: auto; }
+.admin-header h1 { margin: 0; font-size: 1.8em; color: #2c3e50; }
+.back-link { display: flex; align-items: center; gap: 8px; text-decoration: none; background-color: #f8f9fa; color: #495057; padding: 10px 15px; border-radius: 8px; font-weight: 500; border: 1px solid #dee2e6; transition: background-color 0.2s; }
+.back-link:hover { background-color: #e9ecef; }
+.table-wrapper { width: 100%; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+th, td { border: 1px solid #e9ecef; padding: 12px 15px; text-align: left; vertical-align: middle; }
+th { background-color: #f8f9fa; font-weight: 500; color: #495057; text-transform: uppercase; font-size: 0.85em; }
+tr:hover { background-color: #f1f7ff; }
+.delete-btn { background-color: transparent; color: #dc3545; border: 1px solid #dc3545; border-radius: 5px; width: 40px; height: 40px; cursor: pointer; font-size: 1.1em; transition: all 0.2s; display: flex; justify-content: center; align-items: center; }
+.delete-btn:hover { background-color: #dc3545; color: white; }
+.user-profile { background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e9ecef; }
+.user-profile-header { display: flex; align-items: center; padding: 25px; border-bottom: 1px solid #e9ecef; }
+.user-profile-picture { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-right: 20px; border: 3px solid #f8f9fa; }
+.user-profile-name { margin: 0; font-size: 1.8em; font-weight: 700; color: #2c3e50; line-height: 1.2; }
+.user-profile-subtitle { font-size: 1em; font-weight: 500; color: #6c757d; }
+.user-profile-body { padding: 25px; }
+.user-profile-body h3 { margin-top: 0; margin-bottom: 20px; font-weight: 500; color: #495057; border-bottom: 1px solid #e9ecef; padding-bottom: 10px; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.detail-field label { display: block; font-size: 0.85em; color: #6c757d; margin-bottom: 5px; text-transform: uppercase; }
+.detail-field p { margin: 0; font-size: 1.1em; font-weight: 500; color: #212529; }
+.user-id-detail { font-family: monospace; font-size: 0.95em !important; word-wrap: break-word; }
+@media (max-width: 900px) { .main-container { grid-template-columns: 1fr; height: auto; } .info-panel { display: none; } .form-panel { padding: 30px; } .admin-link { position: static; float: right; margin-bottom: 20px; } }
