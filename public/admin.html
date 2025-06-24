@@ -3,47 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración</title>
+    <title>Panel de Administración - DGM</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Estilos específicos para la tabla de administración */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            table-layout: fixed; /* Ayuda a controlar el ancho de las columnas */
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-            word-wrap: break-word; /* Evita que el texto largo rompa la tabla */
-        }
-        th {
-            background-color: #3f51b5;
-            color: white;
-            font-weight: 500;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Panel de Administración</h1>
-        <p>Lista de todos los usuarios registrados en el sistema.</p>
+    <div class="container container-admin">
+        <header class="admin-header">
+            <div class="header-branding">
+                <img src="/images/logo-migracion.png" alt="Logo Migración" class="header-logo">
+                <h1>Panel de Migración</h1>
+            </div>
+            <a href="/" class="back-link"><i class="fas fa-home"></i> Volver al Inicio</a>
+        </header>
         
-        <div id="user-table-container">
+        <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
+                        <th>Foto</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Pasaporte</th>

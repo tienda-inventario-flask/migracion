@@ -172,3 +172,115 @@ form button:hover {
         margin-bottom: 20px;
     }
 }
+/* --- ESTILOS PARA EL NUEVO PANEL DE ADMINISTRACIÓN --- */
+
+/* Un contenedor más ancho para la tabla */
+.container-admin {
+    max-width: 900px; 
+}
+
+/* Encabezado del panel */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.header-branding {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre el logo y el texto */
+}
+
+.header-logo {
+    width: 60px;
+    height: auto;
+}
+
+.admin-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #2c3e50;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    background-color: #f8f9fa;
+    color: #495057;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: 1px solid #dee2e6;
+    transition: background-color 0.2s;
+}
+
+.back-link:hover {
+    background-color: #e9ecef;
+}
+
+/* Envoltura de la tabla para scroll horizontal en móvil */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Estilos mejorados de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #e9ecef;
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 500;
+    color: #495057;
+    text-transform: uppercase;
+    font-size: 0.85em;
+}
+
+tr:hover {
+    background-color: #f1f7ff;
+}
+
+/* Estilo para la foto de perfil en la tabla */
+.profile-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Ajustes al botón de eliminar */
+.delete-btn {
+    background-color: transparent;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-btn:hover {
+    background-color: #dc3545;
+    color: white;
+}

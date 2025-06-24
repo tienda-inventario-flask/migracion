@@ -1,10 +1,9 @@
-// public/admin.js
+// public/admin.js - VERSIÓN MEJORADA CON FOTOS Y DELETE
 
 window.addEventListener('load', () => {
     const userListBody = document.getElementById('user-list');
     const loadingMessage = document.getElementById('loading-message');
 
-    // Función para cargar y mostrar los usuarios en la tabla
     const fetchAndDisplayUsers = async () => {
         try {
             loadingMessage.textContent = 'Cargando usuarios...';
@@ -20,20 +19,27 @@ window.addEventListener('load', () => {
             loadingMessage.style.display = 'none';
 
             if (users.length === 0) {
-                userListBody.innerHTML = '<tr><td colspan="5">No hay usuarios registrados todavía.</td></tr>';
+                userListBody.innerHTML = '<tr><td colspan="6">No hay usuarios registrados todavía.</td></tr>';
                 return;
             }
 
             userListBody.innerHTML = '';
             users.forEach(user => {
                 const row = document.createElement('tr');
+                
+                // Imagen de perfil (con un placeholder si no existe)
+                const profilePic = user.imagen_url || 'https://i.imgur.com/SufHYmU.png';
+                
                 row.innerHTML = `
+                    <td><img src="${profilePic}" alt="Foto" class="profile-thumbnail"></td>
                     <td>${user.nombre}</td>
                     <td>${user.apellido}</td>
                     <td>${user.pasaporte}</td>
                     <td>${user.fecha_nacimiento_formateada}</td>
                     <td>
-                        <button class="delete-btn" data-id="${user.id}">Eliminar</button>
+                        <button class="delete-btn" data-id="${user.id}" title="Eliminar usuario">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
                     </td>
                 `;
                 userListBody.appendChild(row);
@@ -46,13 +52,13 @@ window.addEventListener('load', () => {
         }
     };
 
-    // Lógica para eliminar, escuchando clics en la tabla
     userListBody.addEventListener('click', async (event) => {
-        if (event.target.classList.contains('delete-btn')) {
-            const button = event.target;
-            const userId = button.dataset.id; 
+        const button = event.target.closest('.delete-btn'); // Buscamos el botón, incluso si se hace clic en el icono
+        if (button) {
+            const userId = button.dataset.id;
+            const userName = button.closest('tr').cells[1].textContent; // Obtenemos el nombre para el mensaje
 
-            const isConfirmed = confirm('¿Estás seguro de que quieres eliminar este usuario? Esta acción no se puede deshacer.');
+            const isConfirmed = confirm(`¿Estás seguro de que quieres eliminar a ${userName}? Esta acción no se puede deshacer.`);
 
             if (isConfirmed) {
                 try {
@@ -75,6 +81,5 @@ window.addEventListener('load', () => {
         }
     });
 
-    // Carga inicial de los usuarios
     fetchAndDisplayUsers();
 });
