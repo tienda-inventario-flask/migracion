@@ -6,12 +6,11 @@ const { Pool } = require('pg');
 const qrcode = require('qrcode');
 const { v4: uuidv4 } = require('uuid');
 const cors = require('cors');
-const multer = require('multer'); // Para subir archivos
-const cloudinary = require('cloudinary').v2; // Para almacenar imágenes
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
 
 // --- Configuración de Cloudinary ---
-// Usará las variables de entorno que pusimos en Render
 cloudinary.config({ 
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
   api_key: process.env.CLOUDINARY_API_KEY, 
@@ -19,7 +18,6 @@ cloudinary.config({
 });
 
 // --- Configuración de Multer ---
-// Le decimos a Multer que guarde el archivo en la memoria temporalmente
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
@@ -40,23 +38,17 @@ app.use(express.static('public'));
 
 // --- RUTAS DE LA API ---
 
-// POST /api/register - MODIFICADA PARA ACEPTAR IMÁGENES
-// Usamos upload.single('foto') para indicarle que esperamos un archivo con el nombre 'foto'
+// POST /api/register - Para registrar un nuevo usuario con foto
 app.post('/api/register', upload.single('foto'), async (req, res) => {
   try {
-    // Los datos de texto ahora vienen en req.body
     const { nombre, apellido, pasaporte, fecha_nacimiento } = req.body;
-    // El archivo de imagen viene en req.file
     const fotoFile = req.file;
+    let imageUrl = null;
 
-    let imageUrl = null; // Empezamos con la URL de la imagen como nula
-
-    // Si el usuario subió una foto, la procesamos
     if (fotoFile) {
-      // Creamos un "stream" de subida a Cloudinary
       const result = await new Promise((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
-          { resource_type: "image", folder: "migracion-qr" }, // Opcional: guarda en una carpeta
+          { resource_type: "image", folder: "migracion-qr" },
           (error, result) => {
             if (error) reject(error);
             else resolve(result);
@@ -64,25 +56,22 @@ app.post('/api/register', upload.single('foto'), async (req, res) => {
         );
         uploadStream.end(fotoFile.buffer);
       });
-      imageUrl = result.secure_url; // Obtenemos la URL segura de la imagen subida
+      imageUrl = result.secure_url;
     }
 
     const id = uuidv4();
-
-    // Guardamos todo en la base de datos, incluida la nueva URL de la imagen
     await pool.query(
       "INSERT INTO usuarios (id, nombre, apellido, pasaporte, fecha_nacimiento, imagen_url) VALUES ($1, $2, $3, $4, $5, $6)",
       [id, nombre, apellido, pasaporte, fecha_nacimiento, imageUrl]
     );
 
-    const userProfileURL = `${process.env.BASE_URL || `https://migracion-qr.onrender.com`}/user.html?id=${id}`;
+    const userProfileURL = `${process.env.BASE_URL}/user.html?id=${id}`;
     const qrCodeDataURL = await qrcode.toDataURL(userProfileURL);
 
     res.status(201).json({ qrCode: qrCodeDataURL });
 
   } catch (err) {
-    // --- MANEJO DE ERRORES MEJORADO ---
-    if (err.code === '23505') { // Código de error de PostgreSQL para "violación de unicidad"
+    if (err.code === '23505') { 
       return res.status(409).json({ message: "Este número de pasaporte ya está registrado." });
     }
     console.error(err.message);
@@ -90,7 +79,7 @@ app.post('/api/register', upload.single('foto'), async (req, res) => {
   }
 });
 
-// GET /api/user/:id - No necesita cambios, ya funciona
+// GET /api/user/:id - Para ver el perfil de un solo usuario
 app.get('/api/user/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -104,6 +93,23 @@ app.get('/api/user/:id', async (req, res) => {
     res.status(500).send("Error en el servidor");
   }
 });
+
+
+// --- RUTAS DE ADMINISTRADOR ---
+
+// GET /api/admin/users - Devuelve todos los usuarios registrados
+app.get('/api/admin/users', async (req, res) => {
+  try {
+    const allUsers = await pool.query(
+      "SELECT id, nombre, apellido, pasaporte, to_char(fecha_nacimiento, 'DD/MM/YYYY') as fecha_nacimiento_formateada FROM usuarios ORDER BY created_at DESC"
+    );
+    res.json(allUsers.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ message: "Error al obtener la lista de usuarios." });
+  }
+});
+
 
 // --- Iniciar el Servidor ---
 app.listen(PORT, () => {
