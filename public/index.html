@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Extranjero - DGM</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,22 +31,18 @@
                         <input type="text" id="apellido" placeholder="Escriba su apellido" required>
                     </div>
                 </div>
-                
                 <div class="form-group">
                     <label for="pasaporte">Número de Pasaporte</label>
                     <input type="text" id="pasaporte" placeholder="Escriba el número de pasaporte" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                     <input type="date" id="fecha_nacimiento" required>
                 </div>
-
                 <div class="form-group">
                     <label for="foto">Foto de Perfil (Opcional)</label>
                     <input type="file" id="foto" name="foto" accept="image/png, image/jpeg">
                 </div>
-                
                 <button type="submit" id="submitBtn">Registrar y Generar QR</button>
             </form>
             
@@ -56,7 +50,6 @@
             <div id="qrContainer"></div>
         </div>
     </div>
-
     <script src="main.js"></script>
 </body>
 </html>
