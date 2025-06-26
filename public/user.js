@@ -1,4 +1,4 @@
-// public/user.js - VERSIÓN FINAL PARA EL DISEÑO "COQUETO"
+// public/user.js - VERSIÓN CORREGIDA QUE INCLUYE EL ID DE REGISTRO
 
 window.addEventListener('load', async () => {
     const params = new URLSearchParams(window.location.search);
@@ -17,34 +17,36 @@ window.addEventListener('load', async () => {
         const user = await response.json();
         const profilePic = user.imagen_url || 'https://i.imgur.com/SufHYmU.png'; // Un avatar por defecto
 
-        // Construimos el HTML de la nueva tarjeta de perfil
+        // Construimos el HTML del perfil, ahora incluyendo el ID
         profileCard.innerHTML = `
-            <div class="profile-header">
-                <img src="${profilePic}" alt="Foto de perfil" class="profile-picture">
-                <h1 class="profile-name">${user.nombre} ${user.apellido}</h1>
+            <div class="user-profile-header">
+                <img src="${profilePic}" alt="Foto de perfil" class="user-profile-picture">
+                <div class="user-profile-name-section">
+                    <h2 class="user-profile-name">${user.nombre} ${user.apellido}</h2>
+                    <span class="user-profile-subtitle">Residente Temporal</span>
+                </div>
             </div>
-            <div class="profile-details">
-                <div class="detail-item">
-                    <i class="fas fa-passport"></i>
-                    <div class="detail-item-content">
-                        <strong>Pasaporte</strong>
-                        <span>${user.pasaporte}</span>
+            <div class="user-profile-body">
+                <h3>Detalles del Registro</h3>
+                <div class="detail-grid">
+                    <div class="detail-field">
+                        <label>Número de Pasaporte</label>
+                        <p>${user.pasaporte}</p>
                     </div>
-                </div>
-                <div class="detail-item">
-                    <i class="fas fa-calendar-alt"></i>
-                     <div class="detail-item-content">
-                        <strong>Fecha de Nacimiento</strong>
-                        <span>${new Date(user.fecha_nacimiento).toLocaleDateString()}</span>
+                    <div class="detail-field">
+                        <label>Fecha de Nacimiento</label>
+                        <p>${new Date(user.fecha_nacimiento).toLocaleDateString()}</p>
                     </div>
-                </div>
-                 <div class="detail-item">
-                    <i class="fas fa-clock"></i>
-                     <div class="detail-item-content">
-                        <strong>Fecha de Registro</strong>
-                        <span>${new Date(user.created_at).toLocaleDateString()}</span>
+                    <div class="detail-field">
+                        <label>Fecha de Registro</label>
+                        <p>${new Date(user.created_at).toLocaleDateString()}</p>
                     </div>
-                </div>
+                    
+                    <div class="detail-field">
+                        <label>ID de Registro Único</label>
+                        <p class="user-id-detail">${user.id}</p>
+                    </div>
+                    </div>
             </div>
         `;
 
