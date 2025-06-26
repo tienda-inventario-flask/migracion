@@ -1,12 +1,12 @@
-// public/user.js - VERSIÓN FINAL CON NUEVO DISEÑO
+// public/user.js - VERSIÓN FINAL PARA EL DISEÑO "COQUETO"
 
 window.addEventListener('load', async () => {
     const params = new URLSearchParams(window.location.search);
     const userId = params.get('id');
-    const profileContainer = document.getElementById('profile-container');
+    const profileCard = document.getElementById('profile-card');
 
     if (!userId) {
-        profileContainer.innerHTML = '<h2>Error</h2><p style="color: red;">No se proporcionó un ID de usuario.</p>';
+        profileCard.innerHTML = '<h2>Error</h2><p style="color: red;">No se proporcionó un ID de usuario.</p>';
         return;
     }
 
@@ -15,37 +15,34 @@ window.addEventListener('load', async () => {
         if (!response.ok) throw new Error('Usuario no encontrado');
 
         const user = await response.json();
-        const profilePic = user.imagen_url || 'https://i.imgur.com/SufHYmU.png';
+        const profilePic = user.imagen_url || 'https://i.imgur.com/SufHYmU.png'; // Un avatar por defecto
 
-        // Construimos el HTML del nuevo perfil elegante
-        profileContainer.innerHTML = `
-            <div class="user-profile">
-                <div class="user-profile-header">
-                    <img src="${profilePic}" alt="Foto de perfil" class="user-profile-picture">
-                    <div class="user-profile-name-section">
-                        <h2 class="user-profile-name">${user.nombre} ${user.apellido}</h2>
-                        <span class="user-profile-subtitle">Residente Temporal</span>
+        // Construimos el HTML de la nueva tarjeta de perfil
+        profileCard.innerHTML = `
+            <div class="profile-header">
+                <img src="${profilePic}" alt="Foto de perfil" class="profile-picture">
+                <h1 class="profile-name">${user.nombre} ${user.apellido}</h1>
+            </div>
+            <div class="profile-details">
+                <div class="detail-item">
+                    <i class="fas fa-passport"></i>
+                    <div class="detail-item-content">
+                        <strong>Pasaporte</strong>
+                        <span>${user.pasaporte}</span>
                     </div>
                 </div>
-                <div class="user-profile-body">
-                    <h3>Detalles del Registro</h3>
-                    <div class="detail-grid">
-                        <div class="detail-field">
-                            <label>Número de Pasaporte</label>
-                            <p>${user.pasaporte}</p>
-                        </div>
-                        <div class="detail-field">
-                            <label>Fecha de Nacimiento</label>
-                            <p>${new Date(user.fecha_nacimiento).toLocaleDateString()}</p>
-                        </div>
-                        <div class="detail-field">
-                            <label>ID de Registro</label>
-                            <p class="user-id-detail">${user.id}</p>
-                        </div>
-                        <div class="detail-field">
-                            <label>Fecha de Registro</label>
-                            <p>${new Date(user.created_at).toLocaleDateString()}</p>
-                        </div>
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                     <div class="detail-item-content">
+                        <strong>Fecha de Nacimiento</strong>
+                        <span>${new Date(user.fecha_nacimiento).toLocaleDateString()}</span>
+                    </div>
+                </div>
+                 <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                     <div class="detail-item-content">
+                        <strong>Fecha de Registro</strong>
+                        <span>${new Date(user.created_at).toLocaleDateString()}</span>
                     </div>
                 </div>
             </div>
@@ -53,6 +50,6 @@ window.addEventListener('load', async () => {
 
     } catch (error) {
         console.error('Error al cargar datos:', error);
-        profileContainer.innerHTML = `<h2>Error</h2><p style="color: red;">${error.message}</p>`;
+        profileCard.innerHTML = `<h2>Error</h2><p style="color: red;">${error.message}</p>`;
     }
 });

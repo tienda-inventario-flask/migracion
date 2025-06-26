@@ -4,29 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Residente - DGM</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main-container">
-        <div class="info-panel">
-            <img src="/images/logo-migracion.png" alt="Logo Dirección General de Migración" class="info-logo">
-            <h2>República Dominicana</h2>
-            <h1>Dirección General de Migración</h1>
-            <p>Portal de Registro para Extranjeros.</p>
-        </div>
-
-        <div class="form-panel">
-            <div id="profile-container">
-                <p>Cargando perfil...</p>
-            </div>
+    <div class="content-wrapper">
+        <div class="content-card" id="profile-card">
+            <div class="loader"></div>
+            <p>Cargando perfil...</p>
         </div>
     </div>
-
     <script src="user.js"></script>
 </body>
 </html>

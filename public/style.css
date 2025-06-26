@@ -1,201 +1,96 @@
-/* public/style.css - DISEÑO FINAL UNIFICADO */
+/* public/style.css - DISEÑO "COQUETO" FINAL Y UNIFICADO */
 
-/* --- Estilos Generales --- */
+/* --- Estilos Generales y Fondo con Degradado --- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #eef2f9; /* Fondo limpio y claro */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #333;
+    padding: 20px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
 }
 
-/* --- Contenedor Principal (para centrar tarjetas) --- */
-.main-content-wrapper, .login-container {
+/* --- Contenedor para Centrar Tarjetas --- */
+.content-wrapper, .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-/* --- Estilo de Tarjeta Principal (Usado en Login y Registro) --- */
-.form-card, .login-card {
-    background: #ffffff;
-    padding: 40px 50px;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 500px;
+/* --- Estilo de Tarjeta Flotante Principal --- */
+.content-card, .login-card, .container-admin {
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     width: 100%;
-    box-sizing: border-box;
+    max-width: 550px;
+    text-align: center;
 }
 
-.form-logo, .login-logo {
+.login-card { max-width: 420px; }
+.container-admin { max-width: 950px; margin-top: 40px; margin-bottom: 40px; }
+
+
+/* --- Elementos Comunes de las Tarjetas --- */
+.card-logo, .login-logo {
     width: 120px;
     margin-bottom: 20px;
 }
-
-.form-card h1, .login-card h2 {
+.card-title, .login-card h2 {
     margin-top: 0;
-    margin-bottom: 10px;
-    font-weight: 700;
-    color: #1c2538;
-}
-
-.login-subtitle {
-    color: #6c757d;
     margin-bottom: 30px;
+    font-weight: 700;
+    color: #3f51b5;
 }
 
-/* --- Estilos de Formulario --- */
-form {
-    text-align: left;
+/* --- Estilos de Formularios --- */
+form { text-align: left; }
+.form-row { display: flex; gap: 20px; }
+.form-group { flex: 1; margin-bottom: 20px; }
+form label { display: block; font-size: 0.9em; font-weight: 500; margin-bottom: 8px; color: #495057; }
+form input[type="text"], form input[type="date"], form input[type="file"], form input[type="password"] {
+    width: 100%; padding: 12px; border: 1px solid #dcdce0; border-radius: 8px; font-size: 1em; box-sizing: border-box;
 }
+form input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 8px rgba(102, 126, 234, 0.4); }
+form button { width: 100%; background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 15px; border: none; border-radius: 8px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: all 0.3s; margin-top: 10px; }
+form button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
 
-.form-row {
-    display: flex;
-    gap: 20px;
-}
+/* --- Tarjeta de Perfil de Usuario Rediseñada --- */
+#profile-card { padding: 0; overflow: hidden; text-align: left; }
+.profile-header { background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0)); padding: 30px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+.profile-picture { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin: 0 auto 15px auto; border: 4px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.profile-name { margin: 0; font-size: 2em; color: #1c2538; font-weight: 700; }
+.profile-details { padding: 30px; }
+.detail-item { display: flex; align-items: center; margin-bottom: 25px; font-size: 1.1em; }
+.detail-item i { color: #667eea; font-size: 1.8em; width: 50px; text-align: center; margin-right: 15px; }
+.detail-item-content strong { display: block; color: #3f51b5; font-size: 0.8em; text-transform: uppercase; }
+.detail-item-content span { font-weight: 500; }
 
-.form-group {
-    flex: 1;
-    margin-bottom: 20px;
-}
-
-form label {
-    display: block;
-    font-size: 0.9em;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: #495057;
-}
-
-form input[type="text"],
-form input[type="date"],
-form input[type="file"],
-form input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #dcdce0;
-    border-radius: 8px;
-    font-size: 1em;
-    box-sizing: border-box;
-}
-
-form input:focus {
-    outline: none;
-    border-color: #4a69ff;
-    box-shadow: 0 0 5px rgba(74, 105, 255, 0.3);
-}
-
-form button {
-    width: 100%;
-    background: #4a69ff;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-}
-
-form button:hover {
-    background: #3b55d1;
-}
-
-.error-text {
-    color: #dc3545;
-    text-align: center;
-    margin-top: 15px;
-    font-weight: 500;
-    min-height: 1.2em;
-}
-
-/* --- Enlace Flotante para Panel de Admin --- */
-.page-corner-link {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 100;
-    text-decoration: none;
-    background-color: #1c2538;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 0.9em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: all 0.2s;
-}
-.page-corner-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-/* --- Contenedor de QR y Loader --- */
-#qrContainer {
-    margin-top: 20px;
-    text-align: center;
-}
-.loader {
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #4a69ff;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* --- ESTILOS PARA EL PANEL DE ADMINISTRACIÓN --- */
-.container-admin {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-}
-/* ... (Se pegan aquí todos los demás estilos de admin y user profile) ... */
+/* --- Otros Estilos (Admin, etc.) --- */
+.page-corner-link { position: fixed; top: 20px; right: 20px; z-index: 100; text-decoration: none; background: rgba(28, 37, 56, 0.8); backdrop-filter: blur(5px); color: white; padding: 10px 15px; border-radius: 8px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: all 0.2s; }
+.page-corner-link:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); background: #1c2538; }
+.loader { border: 5px solid #f3f3f3; border-top: 5px solid #667eea; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 .admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dee2e6; padding-bottom: 20px; margin-bottom: 20px; }
 .header-branding { display: flex; align-items: center; gap: 15px; }
-.header-logo { width: 60px; height: auto; }
-.admin-header h1 { margin: 0; font-size: 1.8em; color: #2c3e50; }
-.header-actions { display: flex; align-items: center; gap: 15px; }
-.action-btn, .back-link { display: flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 15px; border-radius: 8px; font-weight: 500; border: 1px solid transparent; transition: all 0.2s; }
-.action-btn { background-color: #4a69ff; color: white; }
-.action-btn:hover { background-color: #3b55d1; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.back-link { background-color: #f8f9fa; color: #495057; border-color: #dee2e6; }
-.back-link:hover { background-color: #e9ecef; }
-.table-wrapper { width: 100%; overflow-x: auto; }
+.header-logo { width: 60px; }
+.admin-header h1 { margin: 0; font-size: 1.8em; }
+.header-actions { display: flex; gap: 15px; }
+.action-btn { background: linear-gradient(45deg, #667eea, #764ba2); }
+.action-btn, .back-link { display: flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 15px; border-radius: 8px; font-weight: 500; border: 1px solid transparent; transition: all 0.2s; color: white; }
+.back-link { background-color: #e9ecef; color: #495057; border-color: #dee2e6; }
 table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-th, td { border: 1px solid #e9ecef; padding: 12px 15px; text-align: left; vertical-align: middle; }
-th { background-color: #f8f9fa; font-weight: 500; color: #495057; text-transform: uppercase; font-size: 0.85em; }
-tr:hover { background-color: #f1f7ff; }
-.delete-btn { background-color: transparent; color: #dc3545; border: 1px solid #dc3545; border-radius: 5px; width: 40px; height: 40px; cursor: pointer; font-size: 1.1em; transition: all 0.2s; display: flex; justify-content: center; align-items: center; }
-.delete-btn:hover { background-color: #dc3545; color: white; }
-.user-profile { background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e9ecef; max-width: 500px; }
-.user-profile-header { display: flex; align-items: center; padding: 25px; border-bottom: 1px solid #e9ecef; }
-.user-profile-picture { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-right: 20px; border: 3px solid #f8f9fa; }
-.user-profile-name { margin: 0; font-size: 1.8em; font-weight: 700; color: #2c3e50; line-height: 1.2; }
-.user-profile-subtitle { font-size: 1em; font-weight: 500; color: #6c757d; }
-.user-profile-body { padding: 25px; }
-.user-profile-body h3 { margin-top: 0; margin-bottom: 20px; font-weight: 500; color: #495057; border-bottom: 1px solid #e9ecef; padding-bottom: 10px; }
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.detail-field label { display: block; font-size: 0.85em; color: #6c757d; margin-bottom: 5px; text-transform: uppercase; }
-.detail-field p { margin: 0; font-size: 1.1em; font-weight: 500; color: #212529; }
-.user-id-detail { font-family: monospace; font-size: 0.95em !important; word-wrap: break-word; }
+th, td { border-bottom: 1px solid #e9ecef; padding: 16px; text-align: left; vertical-align: middle; }
+th { color: #6c757d; text-transform: uppercase; font-size: 0.85em; }
+tr:last-child td { border-bottom: none; }
+.delete-btn { background-color: transparent; color: #dc3545; border: none; width: 40px; height: 40px; cursor: pointer; font-size: 1.1em; transition: all 0.2s; display: flex; justify-content: center; align-items: center; }
+.delete-btn:hover { background-color: #dc3545; color: white; border-radius: 8px; }
