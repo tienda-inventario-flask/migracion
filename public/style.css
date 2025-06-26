@@ -1,4 +1,4 @@
-/* public/style.css - VERSIÓN FINAL Y DEFINITIVA */
+/* public/style.css - DISEÑO FINAL CON FOTO DE PERFIL CUADRADA */
 
 /* --- Estilos Generales --- */
 :root {
@@ -15,7 +15,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: var(--light-gray-bg);
+    background-color: #eef2f9; /* Fondo limpio y claro */
     color: var(--text-color);
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@ body {
     box-sizing: border-box;
 }
 
-/* --- Estilo de Tarjeta Principal (Base para todas las vistas) --- */
+/* --- Estilo de Tarjeta Principal --- */
 .card {
     background: var(--white-color);
     padding: 40px;
@@ -38,38 +38,26 @@ body {
     box-sizing: border-box;
 }
 
-/* --- Logo y Títulos --- */
-.card-logo {
-    width: 100px;
-    margin-bottom: 25px;
-}
-.card-title {
-    margin: 0 0 10px 0;
-    font-weight: 700;
-    font-size: 1.8em;
-    color: var(--primary-color);
-}
-.card-subtitle {
-    color: var(--text-color-light);
-    margin-bottom: 30px;
-    font-size: 1.1em;
-}
-
-/* --- Formularios --- */
+/* ... (El resto de los estilos se mantienen exactamente igual que antes) ... */
+.content-wrapper, .login-container { display: flex; justify-content: center; align-items: center; width: 100%; }
+.login-card { background: var(--white-color); padding: 40px 50px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); border: 1px solid var(--border-color); width: 100%; max-width: 420px; text-align: center; }
+.card-logo, .login-logo { width: 100px; margin-bottom: 20px; }
+.card-title, .login-card h2, .admin-header h1 { margin-top: 0; margin-bottom: 30px; font-weight: 700; color: #2c3e50; }
 form { text-align: left; }
 .form-row { display: flex; gap: 20px; }
 .form-group { flex: 1; margin-bottom: 20px; }
 form label { display: block; font-size: 0.9em; font-weight: 500; margin-bottom: 8px; color: var(--text-color-light); }
-form input[type="text"], form input[type="date"], form input[type="file"], form input[type="password"] {
-    width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1em; box-sizing: border-box;
-}
+form input[type="text"], form input[type="date"], form input[type="file"], form input[type="password"] { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1em; box-sizing: border-box; }
 form input:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 5px rgba(25, 118, 210, 0.3); }
 form button { width: 100%; background: var(--accent-color); color: white; padding: 15px; border: none; border-radius: 8px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s; margin-top: 10px; }
 form button:hover { background: var(--primary-color); }
 .error-text { color: var(--danger-color); font-weight: 500; min-height: 1.2em; margin-top: 15px; }
-
-/* --- Panel de Administración --- */
-.admin-card { max-width: 1000px; }
+.page-corner-link { position: fixed; top: 20px; right: 20px; z-index: 100; text-decoration: none; background: #fff; color: #495057; padding: 10px 15px; border-radius: 8px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #e9ecef; transition: all 0.2s; }
+.page-corner-link:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+#qrContainer { text-align: center; }
+.loader { border: 5px solid #f3f3f3; border-top: 5px solid var(--accent-color); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.container-admin { max-width: 950px; margin: 40px auto; padding: 40px; background-color: var(--white-color); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 .admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 20px; }
 .header-branding { display: flex; align-items: center; gap: 15px; }
 .header-logo { width: 50px; }
@@ -87,21 +75,29 @@ th { color: var(--text-color-light); text-transform: uppercase; font-size: 0.8em
 tr:last-child td { border-bottom: none; }
 .delete-btn { background: transparent; color: var(--danger-color); border: none; cursor: pointer; font-size: 1.2em; padding: 5px; border-radius: 50%; width: 35px; height: 35px; line-height: 1; transition: background-color 0.2s; }
 .delete-btn:hover { background-color: #fbe9e7; }
-
-/* --- Perfil de Usuario --- */
 .profile-card { max-width: 450px; padding: 0; overflow: hidden; }
 .profile-header { text-align: center; padding: 30px; border-bottom: 1px solid var(--border-color); }
-.profile-picture { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--white-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-.profile-name { margin: 0; font-size: 1.6em; color: var(--primary-color); }
-.profile-details { padding: 30px; }
-.detail-item { display: flex; align-items: flex-start; margin-bottom: 20px; }
-.detail-item i { font-size: 1.2em; color: var(--accent-color); width: 30px; text-align: center; margin-right: 15px; margin-top: 4px; }
-.detail-item-content strong { display: block; font-size: 0.8em; color: var(--text-color-light); text-transform: uppercase; }
-.detail-item-content span { font-size: 1.1em; }
-.user-id-detail { font-family: monospace; font-size: 1em !important; }
-.qr-code-section { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); }
-#qr-code-img { max-width: 150px; }
 
-/* --- Loader --- */
-.loader { border: 5px solid #f3f3f3; border-top: 5px solid var(--accent-color); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+/* --- ESTILOS PARA LA FOTO DE PERFIL --- */
+.user-profile-picture {
+    width: 120px;
+    height: 120px;
+    
+    /* ¡AQUÍ ESTÁ EL CAMBIO! De 50% a 16px */
+    border-radius: 16px; 
+    
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid var(--white-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.user-profile-name { margin: 0; font-size: 1.6em; color: var(--primary-color); }
+.user-profile-subtitle { font-size: 1em; color: var(--text-color-light); }
+.user-profile-body { padding: 30px; }
+.user-profile-body h3 { margin-top: 0; margin-bottom: 20px; font-weight: 500; color: #495057; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+.detail-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.detail-field { text-align: left; }
+.detail-field label { display: block; font-size: 0.85em; color: var(--text-color-light); margin-bottom: 5px; text-transform: uppercase; }
+.detail-field p { margin: 0; font-size: 1.1em; font-weight: 500; }
+.user-id-detail { font-family: monospace; font-size: 1em !important; word-wrap: break-word; }
