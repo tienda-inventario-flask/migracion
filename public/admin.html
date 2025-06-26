@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - DGM</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
@@ -12,41 +11,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container container-admin">
+    <div class="card admin-card">
         <header class="admin-header">
             <div class="header-branding">
-                <img src="/images/logo-migracion.png" alt="Logo Migración" class="header-logo">
+                <img src="/images/logo-migracion.png" alt="Logo" class="header-logo">
                 <h1>Panel de Migración</h1>
             </div>
-
             <div class="header-actions">
-                <a href="/index.html" class="action-btn">
-                    <i class="fas fa-user-plus"></i> Registrar Extranjero
-                </a>
-                <a href="/api/logout" class="back-link">
-                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-                </a>
+                <a href="/index.html" class="action-btn"><i class="fas fa-user-plus"></i> Registrar Nuevo</a>
+                <a href="/api/logout" class="logout-link"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
             </div>
-            </header>
-        
+        </header>
         <div class="table-wrapper">
             <table>
                 <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Pasaporte</th>
-                        <th>Nacimiento</th>
-                        <th>Acciones</th>
-                    </tr>
+                    <tr><th>Nombre</th><th>Apellido</th><th>Pasaporte</th><th>Nacimiento</th><th>Acciones</th></tr>
                 </thead>
-                <tbody id="user-list">
-                    </tbody>
+                <tbody id="user-list"></tbody>
             </table>
         </div>
         <p id="loading-message">Cargando usuarios...</p>
     </div>
-
     <script src="admin.js"></script>
 </body>
 </html>

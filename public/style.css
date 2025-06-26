@@ -1,11 +1,22 @@
-/* public/style.css - DISEÑO FINAL CLÁSICO Y LIMPIO */
+/* public/style.css - VERSIÓN FINAL Y DEFINITIVA */
 
 /* --- Estilos Generales --- */
+:root {
+    --primary-color: #0d47a1; /* Azul oscuro oficial */
+    --accent-color: #1976d2; /* Azul más brillante para acciones */
+    --light-gray-bg: #f8f9fa; /* Fondo general muy claro */
+    --text-color: #333;
+    --text-color-light: #6c757d;
+    --border-color: #dee2e6;
+    --white-color: #ffffff;
+    --danger-color: #d9534f;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #f4f7fc; /* Fondo gris azulado, muy claro y profesional */
-    color: #333;
+    background-color: var(--light-gray-bg);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,100 +25,83 @@ body {
     box-sizing: border-box;
 }
 
-/* --- Estilo de Tarjeta Principal (Usado en todas las páginas) --- */
-.content-card {
-    background: #ffffff;
-    padding: 40px 50px;
+/* --- Estilo de Tarjeta Principal (Base para todas las vistas) --- */
+.card {
+    background: var(--white-color);
+    padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e9ecef;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border-color);
     width: 100%;
-    max-width: 550px;
+    max-width: 500px;
     text-align: center;
+    box-sizing: border-box;
 }
 
-/* --- Contenedores para Centrar --- */
-.content-wrapper, .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.login-card { /* Hereda de content-card pero puede tener ajustes */
-    background: #ffffff;
-    padding: 40px 50px;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e9ecef;
-    width: 100%;
-    max-width: 420px;
-    text-align: center;
-}
-
-/* --- Elementos de las Tarjetas --- */
-.card-logo, .login-logo {
+/* --- Logo y Títulos --- */
+.card-logo {
     width: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
-
-.card-title, .login-card h2, .admin-header h1 {
-    margin-top: 0;
-    margin-bottom: 30px;
+.card-title {
+    margin: 0 0 10px 0;
     font-weight: 700;
-    color: #2c3e50; /* Azul marino oscuro */
+    font-size: 1.8em;
+    color: var(--primary-color);
+}
+.card-subtitle {
+    color: var(--text-color-light);
+    margin-bottom: 30px;
+    font-size: 1.1em;
 }
 
-/* --- Estilos de Formularios --- */
+/* --- Formularios --- */
 form { text-align: left; }
 .form-row { display: flex; gap: 20px; }
 .form-group { flex: 1; margin-bottom: 20px; }
-form label { display: block; font-size: 0.9em; font-weight: 500; margin-bottom: 8px; color: #495057; }
+form label { display: block; font-size: 0.9em; font-weight: 500; margin-bottom: 8px; color: var(--text-color-light); }
 form input[type="text"], form input[type="date"], form input[type="file"], form input[type="password"] {
-    width: 100%; padding: 12px; border: 1px solid #dcdce0; border-radius: 8px; font-size: 1em; box-sizing: border-box;
+    width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1em; box-sizing: border-box;
 }
-form input:focus { outline: none; border-color: #4a69ff; box-shadow: 0 0 5px rgba(74, 105, 255, 0.3); }
-form button { width: 100%; background: #4a69ff; color: white; padding: 15px; border: none; border-radius: 8px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s; margin-top: 10px; }
-form button:hover { background: #3b55d1; }
-.error-text { color: #dc3545; font-weight: 500; min-height: 1.2em; }
-
-
-/* --- Enlace Flotante para Panel de Admin --- */
-.page-corner-link { position: fixed; top: 20px; right: 20px; z-index: 100; text-decoration: none; background: #fff; color: #495057; padding: 10px 15px; border-radius: 8px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #e9ecef; transition: all 0.2s; }
-.page-corner-link:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
-
-/* --- Loader y QR --- */
-#qrContainer { text-align: center; }
-.loader { border: 5px solid #f3f3f3; border-top: 5px solid #4a69ff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+form input:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 5px rgba(25, 118, 210, 0.3); }
+form button { width: 100%; background: var(--accent-color); color: white; padding: 15px; border: none; border-radius: 8px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: background-color 0.3s; margin-top: 10px; }
+form button:hover { background: var(--primary-color); }
+.error-text { color: var(--danger-color); font-weight: 500; min-height: 1.2em; margin-top: 15px; }
 
 /* --- Panel de Administración --- */
-.container-admin { max-width: 950px; margin: 40px auto; padding: 40px; background-color: #ffffff; }
-.admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dee2e6; padding-bottom: 20px; margin-bottom: 20px; }
+.admin-card { max-width: 1000px; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; margin-bottom: 20px; }
 .header-branding { display: flex; align-items: center; gap: 15px; }
-.header-logo { width: 60px; }
-.header-actions { display: flex; gap: 15px; }
-.action-btn, .back-link { display: flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 15px; border-radius: 8px; font-weight: 500; border: 1px solid transparent; transition: all 0.2s; color: white; }
-.action-btn { background-color: #4a69ff; }
-.action-btn:hover { background-color: #3b55d1; }
-.back-link { background-color: #6c757d; }
-.back-link:hover { background-color: #5a6268; }
+.header-logo { width: 50px; }
+.admin-header h1 { margin: 0; font-size: 1.5em; }
+.header-actions { display: flex; gap: 10px; }
+.action-btn, .logout-link { display: flex; align-items: center; gap: 8px; text-decoration: none; padding: 10px 15px; border-radius: 8px; font-weight: 500; border: 1px solid transparent; transition: all 0.2s; }
+.action-btn { background-color: var(--accent-color); color: var(--white-color); }
+.action-btn:hover { background-color: var(--primary-color); }
+.logout-link { background-color: #6c757d; color: var(--white-color); }
+.logout-link:hover { background-color: #5a6268; }
+.table-wrapper { width: 100%; overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-th, td { border-bottom: 1px solid #e9ecef; padding: 16px; text-align: left; vertical-align: middle; }
-th { color: #6c757d; text-transform: uppercase; font-size: 0.85em; }
+th, td { border-bottom: 1px solid var(--border-color); padding: 16px; text-align: left; vertical-align: middle; }
+th { color: var(--text-color-light); text-transform: uppercase; font-size: 0.8em; }
 tr:last-child td { border-bottom: none; }
-.delete-btn { background-color: transparent; color: #dc3545; border: 1px solid transparent; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 1.1em; transition: all 0.2s; display: flex; justify-content: center; align-items: center; }
-.delete-btn:hover { background-color: #dc3545; color: white; border-color: #dc3545;}
+.delete-btn { background: transparent; color: var(--danger-color); border: none; cursor: pointer; font-size: 1.2em; padding: 5px; border-radius: 50%; width: 35px; height: 35px; line-height: 1; transition: background-color 0.2s; }
+.delete-btn:hover { background-color: #fbe9e7; }
 
-/* --- Página de Perfil de Usuario --- */
-.user-profile { max-width: 500px; padding: 0; overflow: hidden; text-align: left; }
-.user-profile-header { display: flex; align-items: center; padding: 25px; border-bottom: 1px solid #e9ecef; background-color: #f8f9fa; }
-.user-profile-picture { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-right: 20px; }
-.user-profile-name { margin: 0; font-size: 1.8em; color: #2c3e50; }
-.user-profile-subtitle { font-size: 1em; color: #6c757d; }
-.user-profile-body { padding: 30px; }
-.user-profile-body h3 { margin-top: 0; margin-bottom: 20px; font-weight: 500; color: #495057; border-bottom: 1px solid #e9ecef; padding-bottom: 10px; }
-.detail-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-.detail-field label { font-size: 0.85em; color: #6c757d; }
-.detail-field p { margin: 4px 0 0; font-size: 1.1em; }
-.user-id-detail { font-family: monospace; font-size: 0.95em !important; word-wrap: break-word; }
+/* --- Perfil de Usuario --- */
+.profile-card { max-width: 450px; padding: 0; overflow: hidden; }
+.profile-header { text-align: center; padding: 30px; border-bottom: 1px solid var(--border-color); }
+.profile-picture { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid var(--white-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.profile-name { margin: 0; font-size: 1.6em; color: var(--primary-color); }
+.profile-details { padding: 30px; }
+.detail-item { display: flex; align-items: flex-start; margin-bottom: 20px; }
+.detail-item i { font-size: 1.2em; color: var(--accent-color); width: 30px; text-align: center; margin-right: 15px; margin-top: 4px; }
+.detail-item-content strong { display: block; font-size: 0.8em; color: var(--text-color-light); text-transform: uppercase; }
+.detail-item-content span { font-size: 1.1em; }
+.user-id-detail { font-family: monospace; font-size: 1em !important; }
+.qr-code-section { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+#qr-code-img { max-width: 150px; }
+
+/* --- Loader --- */
+.loader { border: 5px solid #f3f3f3; border-top: 5px solid var(--accent-color); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
